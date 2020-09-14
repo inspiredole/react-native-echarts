@@ -11,6 +11,20 @@ $ npm install native-echarts --save
 ## Usage
 
 The Usage is complete consistent with Echarts
+add this at `app/build.gradle`
+
+```gradle
+task copyReactNativeHTML(type: Copy) {
+    from '../../node_modules/native-echarts/src/components/html'
+    into 'src/main/assets/html'
+}
+
+gradle.projectsEvaluated {
+    bundleDebugJsAndAssets.dependsOn(copyReactNativeHTML)
+    bundleReleaseJsAndAssets.dependsOn(copyReactNativeHTML)
+}
+```
+
 
 component props:
 
